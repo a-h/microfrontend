@@ -28,6 +28,7 @@ templ home() {
 	<html>
 		<head>
 			<title>Microfrontend example</title>
+			<script src="https://unpkg.com/@hotwired/turbo@7.1.0/dist/turbo.es2017-umd.js" type="text/javascript"></script>
 		</head>
 		<body>
 			<header class={ templ.Classes(headerCSS()) }>
@@ -38,7 +39,9 @@ templ home() {
 					Navigation
 				</nav>
 				<article class={ templ.Classes(articleCSS()) }>
-					Article
+					<turbo-frame id="article" src="/article/123">
+						Loading article (it takes 5 seconds)
+					</turbo-frame>
 				</article>
 			</section>
 		</body>

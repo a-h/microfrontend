@@ -95,6 +95,34 @@ func home() templ.Component {
 		if err != nil {
 			return err
 		}
+// RawElement
+		_, err = templBuffer.WriteString("<script")
+		if err != nil {
+			return err
+		}
+		// Element Attributes
+		_, err = templBuffer.WriteString(" src=\"https://unpkg.com/@hotwired/turbo@7.1.0/dist/turbo.es2017-umd.js\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(" type=\"text/javascript\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(">")
+		if err != nil {
+			return err
+		}
+// Text
+var_3 := ``
+_, err = templBuffer.WriteString(var_3)
+if err != nil {
+	return err
+}
+		_, err = templBuffer.WriteString("</script>")
+		if err != nil {
+			return err
+		}
 		_, err = templBuffer.WriteString("</head>")
 		if err != nil {
 			return err
@@ -106,8 +134,8 @@ func home() templ.Component {
 		}
 		// Element (standard)
 		// Element CSS
-		var var_3 templ.CSSClasses = templ.Classes(headerCSS())
-		err = templ.RenderCSSItems(ctx, templBuffer, var_3...)
+		var var_4 templ.CSSClasses = templ.Classes(headerCSS())
+		err = templ.RenderCSSItems(ctx, templBuffer, var_4...)
 		if err != nil {
 			return err
 		}
@@ -124,7 +152,7 @@ func home() templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = templBuffer.WriteString(templ.EscapeString(var_3.String()))
+		_, err = templBuffer.WriteString(templ.EscapeString(var_4.String()))
 		if err != nil {
 			return err
 		}
@@ -137,8 +165,8 @@ func home() templ.Component {
 			return err
 		}
 		// Text
-		var_4 := `Header	`
-		_, err = templBuffer.WriteString(var_4)
+		var_5 := `Header	`
+		_, err = templBuffer.WriteString(var_5)
 		if err != nil {
 			return err
 		}
@@ -148,44 +176,12 @@ func home() templ.Component {
 		}
 		// Element (standard)
 		// Element CSS
-		var var_5 templ.CSSClasses = templ.Classes(sectionCSS())
-		err = templ.RenderCSSItems(ctx, templBuffer, var_5...)
-		if err != nil {
-			return err
-		}
-		_, err = templBuffer.WriteString("<section")
-		if err != nil {
-			return err
-		}
-		// Element Attributes
-		_, err = templBuffer.WriteString(" class=")
-		if err != nil {
-			return err
-		}
-		_, err = templBuffer.WriteString("\"")
-		if err != nil {
-			return err
-		}
-		_, err = templBuffer.WriteString(templ.EscapeString(var_5.String()))
-		if err != nil {
-			return err
-		}
-		_, err = templBuffer.WriteString("\"")
-		if err != nil {
-			return err
-		}
-		_, err = templBuffer.WriteString(">")
-		if err != nil {
-			return err
-		}
-		// Element (standard)
-		// Element CSS
-		var var_6 templ.CSSClasses = templ.Classes(navCSS())
+		var var_6 templ.CSSClasses = templ.Classes(sectionCSS())
 		err = templ.RenderCSSItems(ctx, templBuffer, var_6...)
 		if err != nil {
 			return err
 		}
-		_, err = templBuffer.WriteString("<nav")
+		_, err = templBuffer.WriteString("<section")
 		if err != nil {
 			return err
 		}
@@ -210,9 +206,41 @@ func home() templ.Component {
 		if err != nil {
 			return err
 		}
+		// Element (standard)
+		// Element CSS
+		var var_7 templ.CSSClasses = templ.Classes(navCSS())
+		err = templ.RenderCSSItems(ctx, templBuffer, var_7...)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("<nav")
+		if err != nil {
+			return err
+		}
+		// Element Attributes
+		_, err = templBuffer.WriteString(" class=")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(templ.EscapeString(var_7.String()))
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(">")
+		if err != nil {
+			return err
+		}
 		// Text
-		var_7 := `Navigation`
-		_, err = templBuffer.WriteString(var_7)
+		var_8 := `Navigation`
+		_, err = templBuffer.WriteString(var_8)
 		if err != nil {
 			return err
 		}
@@ -222,8 +250,8 @@ func home() templ.Component {
 		}
 		// Element (standard)
 		// Element CSS
-		var var_8 templ.CSSClasses = templ.Classes(articleCSS())
-		err = templ.RenderCSSItems(ctx, templBuffer, var_8...)
+		var var_9 templ.CSSClasses = templ.Classes(articleCSS())
+		err = templ.RenderCSSItems(ctx, templBuffer, var_9...)
 		if err != nil {
 			return err
 		}
@@ -240,7 +268,7 @@ func home() templ.Component {
 		if err != nil {
 			return err
 		}
-		_, err = templBuffer.WriteString(templ.EscapeString(var_8.String()))
+		_, err = templBuffer.WriteString(templ.EscapeString(var_9.String()))
 		if err != nil {
 			return err
 		}
@@ -252,9 +280,31 @@ func home() templ.Component {
 		if err != nil {
 			return err
 		}
+		// Element (standard)
+		_, err = templBuffer.WriteString("<turbo-frame")
+		if err != nil {
+			return err
+		}
+		// Element Attributes
+		_, err = templBuffer.WriteString(" id=\"article\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(" src=\"/article/123\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(">")
+		if err != nil {
+			return err
+		}
 		// Text
-		var_9 := `Article`
-		_, err = templBuffer.WriteString(var_9)
+		var_10 := `Article placeholder`
+		_, err = templBuffer.WriteString(var_10)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("</turbo-frame>")
 		if err != nil {
 			return err
 		}
