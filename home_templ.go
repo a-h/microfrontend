@@ -8,6 +8,55 @@ import "github.com/a-h/templ"
 import "context"
 import "io"
 import "bytes"
+import "strings"
+
+func headerCSS() templ.CSSClass {
+	var templCSSBuilder strings.Builder
+	templCSSBuilder.WriteString(`background-color:#666;`)
+	templCSSBuilder.WriteString(`padding:30px;`)
+	templCSSBuilder.WriteString(`text-align:center;`)
+	templCSSBuilder.WriteString(`font-size:35px;`)
+	templCSSBuilder.WriteString(`color:white;`)
+	templCSSID := templ.CSSID(`headerCSS`, templCSSBuilder.String())
+	return templ.ComponentCSSClass{
+		ID: templCSSID,
+		Class: templ.SafeCSS(`.` + templCSSID + `{` + templCSSBuilder.String() + `}`),
+	}
+}
+
+func sectionCSS() templ.CSSClass {
+	var templCSSBuilder strings.Builder
+	templCSSBuilder.WriteString(`display:flex;`)
+	templCSSID := templ.CSSID(`sectionCSS`, templCSSBuilder.String())
+	return templ.ComponentCSSClass{
+		ID: templCSSID,
+		Class: templ.SafeCSS(`.` + templCSSID + `{` + templCSSBuilder.String() + `}`),
+	}
+}
+
+func navCSS() templ.CSSClass {
+	var templCSSBuilder strings.Builder
+	templCSSBuilder.WriteString(`flex:1;`)
+	templCSSBuilder.WriteString(`background:#ccc;`)
+	templCSSBuilder.WriteString(`padding:20px;`)
+	templCSSID := templ.CSSID(`navCSS`, templCSSBuilder.String())
+	return templ.ComponentCSSClass{
+		ID: templCSSID,
+		Class: templ.SafeCSS(`.` + templCSSID + `{` + templCSSBuilder.String() + `}`),
+	}
+}
+
+func articleCSS() templ.CSSClass {
+	var templCSSBuilder strings.Builder
+	templCSSBuilder.WriteString(`flex:3;`)
+	templCSSBuilder.WriteString(`background-color:#f1f1f1;`)
+	templCSSBuilder.WriteString(`padding:10px;`)
+	templCSSID := templ.CSSID(`articleCSS`, templCSSBuilder.String())
+	return templ.ComponentCSSClass{
+		ID: templCSSID,
+		Class: templ.SafeCSS(`.` + templCSSID + `{` + templCSSBuilder.String() + `}`),
+	}
+}
 
 func home() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
@@ -56,13 +105,40 @@ func home() templ.Component {
 			return err
 		}
 		// Element (standard)
-		_, err = templBuffer.WriteString("<header>")
+		// Element CSS
+		var var_3 templ.CSSClasses = templ.Classes(headerCSS())
+		err = templ.RenderCSSItems(ctx, templBuffer, var_3...)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("<header")
+		if err != nil {
+			return err
+		}
+		// Element Attributes
+		_, err = templBuffer.WriteString(" class=")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(templ.EscapeString(var_3.String()))
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(">")
 		if err != nil {
 			return err
 		}
 		// Text
-		var_3 := `Header	`
-		_, err = templBuffer.WriteString(var_3)
+		var_4 := `Header	`
+		_, err = templBuffer.WriteString(var_4)
 		if err != nil {
 			return err
 		}
@@ -71,18 +147,72 @@ func home() templ.Component {
 			return err
 		}
 		// Element (standard)
-		_, err = templBuffer.WriteString("<section>")
+		// Element CSS
+		var var_5 templ.CSSClasses = templ.Classes(sectionCSS())
+		err = templ.RenderCSSItems(ctx, templBuffer, var_5...)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("<section")
+		if err != nil {
+			return err
+		}
+		// Element Attributes
+		_, err = templBuffer.WriteString(" class=")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(templ.EscapeString(var_5.String()))
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(">")
 		if err != nil {
 			return err
 		}
 		// Element (standard)
-		_, err = templBuffer.WriteString("<nav>")
+		// Element CSS
+		var var_6 templ.CSSClasses = templ.Classes(navCSS())
+		err = templ.RenderCSSItems(ctx, templBuffer, var_6...)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("<nav")
+		if err != nil {
+			return err
+		}
+		// Element Attributes
+		_, err = templBuffer.WriteString(" class=")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(templ.EscapeString(var_6.String()))
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(">")
 		if err != nil {
 			return err
 		}
 		// Text
-		var_4 := `Navigation`
-		_, err = templBuffer.WriteString(var_4)
+		var_7 := `Navigation`
+		_, err = templBuffer.WriteString(var_7)
 		if err != nil {
 			return err
 		}
@@ -91,13 +221,40 @@ func home() templ.Component {
 			return err
 		}
 		// Element (standard)
-		_, err = templBuffer.WriteString("<article>")
+		// Element CSS
+		var var_8 templ.CSSClasses = templ.Classes(articleCSS())
+		err = templ.RenderCSSItems(ctx, templBuffer, var_8...)
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("<article")
+		if err != nil {
+			return err
+		}
+		// Element Attributes
+		_, err = templBuffer.WriteString(" class=")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(templ.EscapeString(var_8.String()))
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString("\"")
+		if err != nil {
+			return err
+		}
+		_, err = templBuffer.WriteString(">")
 		if err != nil {
 			return err
 		}
 		// Text
-		var_5 := `Article`
-		_, err = templBuffer.WriteString(var_5)
+		var_9 := `Article`
+		_, err = templBuffer.WriteString(var_9)
 		if err != nil {
 			return err
 		}

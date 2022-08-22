@@ -1,19 +1,43 @@
 package main
 
+css headerCSS() {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+css sectionCSS() {
+  display: flex;
+}
+
+css navCSS() {
+  flex: 1;
+  background: #ccc;
+  padding: 20px;
+}
+
+css articleCSS() {
+  flex: 3;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
 templ home() {
 	<html>
 		<head>
 			<title>Microfrontend example</title>
 		</head>
 		<body>
-			<header>
+			<header class={ templ.Classes(headerCSS()) }>
 				Header	
 			</header>
-			<section>
-				<nav>
+			<section class={ templ.Classes(sectionCSS()) }>
+				<nav class={ templ.Classes(navCSS()) }>
 					Navigation
 				</nav>
-				<article>
+				<article class={ templ.Classes(articleCSS()) }>
 					Article
 				</article>
 			</section>
